@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Configuration;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using tik4net.Objects.Ip.Hotspot;
 using tik4net.Objects;
-using System.Collections.Generic;
+using tik4net.Objects.Ip.Hotspot;
 
 namespace tik4net.tests
 {
     [TestClass]
-    public class IpHotspotTest: TestBase
+    public class IpHotspotTest : TestBase
     {
         #region HotspotActive
         [TestMethod]
@@ -33,9 +31,11 @@ namespace tik4net.tests
         [TestMethod]
         public void AddSingleUserWillNotFail()
         {
+            var rnd = new Random();
+            //Create user
             var user = new HotspotUser()
             {
-                Name = "TEST " + DateTime.Now.ToString(),
+                Name = $"TEST{rnd.Next(999)}",
                 LimitUptime = "1:00:00",
                 Password = "secretpass",
             };
@@ -46,10 +46,11 @@ namespace tik4net.tests
         [TestMethod]
         public void UpdateUserWillNotFail()
         {
+            var rnd = new Random();
             //Create user
             var user = new HotspotUser()
             {
-                Name = "TEST " + DateTime.Now.ToString(),
+                Name = $"TEST{rnd.Next(999)}",
                 LimitUptime = "1:00:00",
                 Password = "secretpass",
             };
@@ -98,7 +99,7 @@ namespace tik4net.tests
         public void DeleteAllUserProfilesWillNotFail()
         {
             var list = Connection.LoadAll<HotspotUserProfile>();
-            Connection.SaveListDifferences(list.Where(l=>l.Name == "default") /*list with "default" as expected => delete all others*/, list);
+            Connection.SaveListDifferences(list.Where(l => l.Name == "default") /*list with "default" as expected => delete all others*/, list);
         }
         #endregion
 
@@ -117,7 +118,7 @@ namespace tik4net.tests
             {
                 Address = ADDRESS,
             };
-            
+
             Connection.Save(binding);
             var loadedBinding = Connection.LoadAll<HotspotIpBinding>().SingleOrDefault(ib => ib.Address == ADDRESS);
             Assert.IsNotNull(loadedBinding);
@@ -127,4 +128,5 @@ namespace tik4net.tests
 
         #endregion
     }
+
 }
