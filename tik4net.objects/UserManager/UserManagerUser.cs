@@ -1,6 +1,6 @@
 ﻿namespace tik4net.Objects.UserManager
 {
-    [TikEntity("/user-manager/user")]
+    [TikEntity("/user-manager/user", IncludeDetails = true)]
     public class UserManagerUser
     {
         /// <summary>
