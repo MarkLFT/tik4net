@@ -33,7 +33,7 @@
         [TikProperty("password")]
         public string Password { get; set; }
 
-        [TikProperty("shared-users ", DefaultValue = "1")]
+        [TikProperty("shared-users", DefaultValue = "1")]
         public string/*integer | unlimited*/ SharedUsers { get; set; }
 
     }

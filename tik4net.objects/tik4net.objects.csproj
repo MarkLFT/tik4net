@@ -12,7 +12,7 @@
      <Copyright>Copyright (C) Daniel Frantik 2017</Copyright>
      <PackageTags>Mikrotik</PackageTags>
      <PackageOutputPath>../Build</PackageOutputPath>
-     <VersionPrefix>3.0.0</VersionPrefix>
+     <VersionPrefix>3.5.2</VersionPrefix>
      <VersionSuffix Condition=" '$(BUILD_BUILDNUMBER)' != '' ">CI-$(BUILD_BUILDNUMBER)</VersionSuffix>
      <VersionSuffix Condition=" '$(PREVIEW_NUMBER)' != '' ">pre-$(PREVIEW_NUMBER)</VersionSuffix>
      <AssemblyName>tik4net.objects</AssemblyName>
